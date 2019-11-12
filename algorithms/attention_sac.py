@@ -143,7 +143,7 @@ class AttentionSAC(object):
                                                             critic_rets):
             curr_agent = self.agents[a_i]
             v = (all_q * probs).sum(dim=1, keepdim=True)
-            pol_target = q - v
+            pol_target = q
             if soft:
                 pol_loss = (log_pi * (log_pi / self.reward_scale - pol_target).detach()).mean()
             else:
